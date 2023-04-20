@@ -31,14 +31,13 @@ If you choose to extract these major roads, the two network files can be merged 
 
 ### Creating the Plans File
 
+The first step to creating a plans file is generating a population.
 
 Continue reading for information on how to use MATSim.
 
-# matsim-example-project
+# Setting up MATSim
 
-A small example of how to use MATSim as a library.
-
-By default, this project uses the latest (pre-)release. In order to use a different version, edit `pom.xml`.
+This is a guide to setting up MATSim on your machine.
 
 A recommended directory structure is as follows:
 * `src` for sources
