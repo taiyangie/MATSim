@@ -19,15 +19,15 @@ From here, download the relevant .osm file from https://download.geofabrik.de fo
 
 Sometimes it also makes sense to extract major roads not confined in this specific region. To do so, use the following command:
 
-'''
+```
    java -cp osmosis.jar --rb file=xxx.osm.pbf --tf accept-ways \ highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link \ --used-node --wb bigroads.osm.pbf
-'''
+```
 
 If you choose to extract these major roads, the two network files can be merged as follows:
 
-'''
+```
      java -cp osmosis.jar --rb file=bigroads.osm.pbf --rb allroads.osm.pbf \ --merge --wx merged -network.osm
-'''
+```
 
 ### Creating the Plans File
 
