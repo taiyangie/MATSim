@@ -1,3 +1,39 @@
+# Hurricane Evacuation Modeling
+This project is a baseline for running an agent-based model to simulate evacuation movements in Charleston County, South Carolina.
+
+### Running the GUI
+Assuming all the setup for MATSim has been completed and the project is open in IntelliJ, this section will cover how to run a baseline simulation. To start up the GUI for MATSim, go to src>main>java>org.matsim>gui>MATSimGUI. Three .XML files are necessary in order to run a full simulation: a config, network, and plans file. 
+
+### Creating the Config File
+
+### Creating the Network File
+
+The standard method of creating a MATSim starts with downloading the most recent stable build of Osmosis, which can be found at http://wiki.openstreetmap.org/wiki/Osmosis
+
+From here, download the relevant .osm file from https://download.geofabrik.de for your region of interest. Then, you'll need to go to https://www.openstreetmap.org/ to find the coordinates that will define a box around the location from where you want to extract your road network. To do so, zoom into you region and hit the export button in the top left corner. Note this bounding box. In the command line, type the below command with your bounding box coordinates in order to extract the road network.
+
+```
+   java -cp osmosis.jar --rb file=xxx.osm.pbf \
+--bounding-box top=47.701 left=8.346 bottom=47.146 right=9.019 \ completeWays=true --used-node --wb allroads.osm.pbf
+```             
+
+Sometimes it also makes sense to extract major roads not confined in this specific region. To do so, use the following command:
+
+'''
+   java -cp osmosis.jar --rb file=xxx.osm.pbf --tf accept-ways \ highway=motorway,motorway_link,trunk,trunk_link,primary,primary_link \ --used-node --wb bigroads.osm.pbf
+'''
+
+If you choose to extract these major roads, the two network files can be merged as follows:
+
+'''
+     java -cp osmosis.jar --rb file=bigroads.osm.pbf --rb allroads.osm.pbf \ --merge --wx merged -network.osm
+'''
+
+### Creating the Plans File
+
+
+Continue reading for information on how to use MATSim.
+
 # matsim-example-project
 
 A small example of how to use MATSim as a library.
