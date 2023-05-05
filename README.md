@@ -2,6 +2,13 @@
 This project is a baseline for running an agent-based model to simulate evacuation movements in Charleston County, South Carolina.
 
 ### Running the GUI
+To first open the project in IntelliJ on a Linux machine, run the following:
+```
+cd / 
+cd opt
+jetbrains/jetbrains-toolbox
+```
+
 Assuming all the setup for MATSim has been completed and the project is open in IntelliJ, this section will cover how to run a baseline simulation. To start up the GUI for MATSim, go to src>main>java>org.matsim>gui>MATSimGUI. Three .XML files are necessary in order to run a full simulation: a config, network, and population file. 
 
 ### Creating the Config File
