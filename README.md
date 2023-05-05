@@ -2,12 +2,37 @@
 This project is a baseline for running an agent-based model to simulate evacuation movements in Charleston County, South Carolina.
 
 ### Running the GUI
-Assuming all the setup for MATSim has been completed and the project is open in IntelliJ, this section will cover how to run a baseline simulation. To start up the GUI for MATSim, go to src>main>java>org.matsim>gui>MATSimGUI. Three .XML files are necessary in order to run a full simulation: a config, network, and plans file. 
+Assuming all the setup for MATSim has been completed and the project is open in IntelliJ, this section will cover how to run a baseline simulation. To start up the GUI for MATSim, go to src>main>java>org.matsim>gui>MATSimGUI. Three .XML files are necessary in order to run a full simulation: a config, network, and population file. 
 
 ### Creating the Config File
 
+The config file is the file that is directly input into the MATSim GUI. This file contains the locations of the network and population files, the number of iterations and length of day to simulate, activity start and end times, and flow and storage capacities. The following example is a 1% test run of the current scenario. When running large and new scenarios, it is best practice to start at 1%.
+```
+<module name="qsim">
+   <param name="startTime" value="00:00:00"/>
+   <param name="endTime" value="30:00:00"/>
+   <param name="flowCapacityFactor" value="0.01"/>
+   <param name="storageCapacityFactor" value="0.01"/>
+</module>
+```
+
 ### Creating the Network File
 
+A network consists of nodes and links
+```
+<nodes>
+   <node id="103775899" x="456283.916991751" y="5733496.654420585" />
+   <node id="107672423" x="454341.19496910257" y="5734567.121554276" />
+</nodes>
+<links capperiod="01:00:00" effectivecellsize="7.5" effectivelanewidth="3.75">
+   <link id="1" from="31559588" to="31559589" length="77.30198648491773"
+      freespeed="8.333333333333334" capacity="600.0" permlanes="1.0"
+      oneway="1" modes="car" origid="16275017" />
+   <link id="10" from="448010227" to="121904163" length="510.8378636333411"
+      freespeed="12.5" capacity="600.0" permlanes="1.0" oneway="1"
+      modes="car" origid="38089606" />
+</links>
+```
 The standard method of creating a MATSim starts with downloading the most recent stable build of Osmosis, which can be found at http://wiki.openstreetmap.org/wiki/Osmosis
 
 From here, download the relevant .osm file from https://download.geofabrik.de for your region of interest. Then, you'll need to go to https://www.openstreetmap.org/ to find the coordinates that will define a box around the location from where you want to extract your road network. To do so, zoom into you region and hit the export button in the top left corner. Note this bounding box. In the command line, type the below command with your bounding box coordinates in order to extract the road network.
@@ -29,10 +54,29 @@ If you choose to extract these major roads, the two network files can be merged 
      java -cp osmosis.jar --rb file=bigroads.osm.pbf --rb allroads.osm.pbf \ --merge --wx merged -network.osm
 ```
 
-### Creating the Plans File
+### Creating the Population File
 
-The first step to creating a plans file is generating a population.
+A population file contains synthetic people who each have a plan. Each plan has activities and legs which describe what each agent does and how they move.
 
+```
+<person id="12052000_12052000_0">
+   <plan selected="yes">
+      <act type="home" x="454788.14217382803" y="5735115.491572791"
+         end_time="07:16:20" />
+      <leg mode="car"></leg>
+      <act type="work" x="451947.00656881003" y="5736160.56555245"
+      end_time="14:55:41" />
+      <leg mode="car"></leg>
+      <act type="home" x="454788.14217382803" y="5735115.491572791"
+      end_time="16:22:14" />
+      <leg mode="car"></leg>
+      <act type="shopping" x="455006.52115909086" y="5734909.411959048"
+      end_time="17:41:13" />
+      <leg mode="car"></leg>
+      <act type="home" x="454788.14217382803" y="5735115.491572791" />
+   </plan>
+</person>
+```
 Continue reading for information on how to use MATSim.
 
 # Setting up MATSim
