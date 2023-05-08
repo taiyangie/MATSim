@@ -1,5 +1,5 @@
 # Hurricane Evacuation Modeling
-This project is a baseline for running an agent-based model to simulate evacuation movements in Charleston County, South Carolina. The following is a guide for using the developer version in a Java IDE, which is necessary to access the code and libraries to generate your own scenario files. Both the GUI-only and developer version will use identical GUIs and require the same skeleton files.
+This project is a baseline for running an agent-based model to simulate evacuation movements in Charleston County, South Carolina. A short literature review and background to this project can be found [here](https://github.com/taiyangie/MATSim/blob/master/Hurricane_Evac.pdf). The following is a guide for using the developer version in a Java IDE, which is necessary to access the code and libraries to generate your own scenario files. Both the GUI-only and developer version will use identical GUIs and require the same skeleton files.
 
 ### Running the GUI
 To first open the project in IntelliJ on a Linux machine, run the following:
